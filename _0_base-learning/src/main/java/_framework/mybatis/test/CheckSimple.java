@@ -50,4 +50,9 @@ public class CheckSimple {
 
         sqlSession.close();
     }
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }

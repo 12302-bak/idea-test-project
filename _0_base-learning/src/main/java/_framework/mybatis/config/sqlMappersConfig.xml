@@ -10,6 +10,14 @@
         <!-- 打印查询语句 -->
         <setting name="logImpl" value="STDOUT_LOGGING" />
     </settings>
+    <plugins>
+        <plugin interceptor="_framework.mybatis.interceptors.ExamplePlugin">
+            <property name="someProperty" value="100"/>
+        </plugin>
+        <plugin interceptor="_framework.mybatis.interceptors.page.PageInterceptor">
+            <property name="dialect" value="mysql"/>
+        </plugin>
+    </plugins>
     <environments default="development">
         <environment id="development">
             <transactionManager type="JDBC"/>
@@ -28,5 +36,6 @@
         <!--<mapper class="_framework.mybatis.mapper.StudentMapper" />-->
         <!--<package name="_framework.mybatis.mapper"/>-->
         <mapper resource="_framework/mybatis/mapper/Student.xml"/>
+        <mapper resource="_framework/mybatis/mapper/User.xml"/>
     </mappers>
 </configuration>
