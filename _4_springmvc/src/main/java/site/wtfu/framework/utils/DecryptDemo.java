@@ -240,6 +240,7 @@ public class DecryptDemo {
         byte[] target = new byte[ciphertext.length];
         decryptCipher.doFinal(additionalData, ciphertext, encryptionOffset, encryptionLength, ciphertext, encryptionOffset);
         System.out.println(TLSTest.bytesToHex(ciphertext));
+        System.out.println(TLSTest.bytesToHex(ciphertext, encryptionOffset, innerPlaintextLength));
     }
 
 
@@ -276,6 +277,7 @@ public class DecryptDemo {
         byte[] additionalData = additionalData(2L,(short)0x15, ProtocolVersion.TLSv12, 0, innerPlaintextLength, null);
         decryptCipher.doFinal(additionalData, ciphertext, encryptionOffset, encryptionLength, ciphertext, encryptionOffset);
         System.out.println(TLSTest.bytesToHex(ciphertext));
+        System.out.println(TLSTest.bytesToHex(ciphertext, encryptionOffset, innerPlaintextLength));
     }
 
     @Test

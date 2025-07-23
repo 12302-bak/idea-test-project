@@ -184,11 +184,15 @@ public class TLSTest {
 
     }
 
-    public static String bytesToHex(byte[] bytes) {
+    public static String bytesToHex(byte[] bytes, int offset, int length) {
         Formatter formatter = new Formatter();
-        for (byte b : bytes) {
-            formatter.format("%02x ", b);
+        for (int i = offset; i < offset + length; i++) {
+            formatter.format("%02x ", bytes[i]);
         }
         return formatter.toString();
+    }
+
+    public static String bytesToHex(byte[] bytes){
+        return bytesToHex(bytes, 0, bytes.length);
     }
 }
