@@ -50,13 +50,13 @@ public class TLSTest {
                     //target = new URI("https://www.google.com/");
                     //target = new URI("https://beian.mps.gov.cn/#/query/webSearch/");
                     //target = new URI("https://test.wtfu.site/robots.txt");
-            //target = new URI("https://wtfu.site/");
-            target = new URI("https://login.yfjc.xyz/api/v1/client/subscribe?token=xxxxx");
+            target = new URI("https://wtfu.site/");
+            //target = new URI("https://login.yfjc.xyz/api/v1/client/subscribe?token=xxxxx");
 
 
             //wssclient = new WSSClient(new URI("ws://localhost:8787"));
-            wssclient = new WSSClient(new URI("wss://ws.12302.site:8443"));
-            wssclient.addHeader("Host", "ws.12302.site");
+            wssclient = new WSSClient(new URI("wss://icook.hk:2082"));
+            wssclient.addHeader("Host", "cf-vless.xhsgg12302.workers.dev");
             wssclient.connectBlocking();
             byte[] request = buildReq(target);
 
@@ -104,7 +104,7 @@ public class TLSTest {
                     //target = new URI("https://beian.mps.gov.cn/#/query/webSearch/");
                     //target = new URI("https://test.wtfu.site/robots.txt");
                     target = new URI("https://wtfu.site/");
-                    //target = new URI("https://music.163.com");
+                    target = new URI("https://music.163.com");
                     target = new URI("https://yifen.996.buzz/gengxin");
 
             socket = new Socket();

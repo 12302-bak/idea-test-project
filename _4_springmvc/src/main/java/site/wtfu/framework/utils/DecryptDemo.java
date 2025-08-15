@@ -106,13 +106,14 @@ public class DecryptDemo {
     public static TlsSecret TestPreMaster(byte[] peerPublicKey, BigInteger big) throws IOException {
         TlsECConfig ecConfig = new TlsECConfig(0x0017);
         ECDomainParameters domainParameters = BcTlsECDomain.getDomainParameters(ecConfig);
+
+        ECPoint var5 = new FixedPointCombMultiplier().multiply(domainParameters.getG(), big);
+        AsymmetricCipherKeyPair localKeyPair = new AsymmetricCipherKeyPair(new ECPublicKeyParameters(var5, domainParameters), new ECPrivateKeyParameters(big, domainParameters));
+
         BcTlsECDomain domain = new BcTlsECDomain(new BcTlsCrypto(), new TlsECConfig(0x0017));
 
         // BcTlsECDH
         ExBcTlsECDH exBcTlsECDH = new ExBcTlsECDH(domain);
-        ECPoint var5 = new FixedPointCombMultiplier().multiply(domainParameters.getG(), big);
-        AsymmetricCipherKeyPair localKeyPair = new AsymmetricCipherKeyPair(new ECPublicKeyParameters(var5, domainParameters), new ECPrivateKeyParameters(big, domainParameters));
-
         // byte[] point = bcTlsECDH.generateEphemeral();
         exBcTlsECDH.setLocalKeyPair(localKeyPair);
         exBcTlsECDH.receivePeerValue(peerPublicKey);
